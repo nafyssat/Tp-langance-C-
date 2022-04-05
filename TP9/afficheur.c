@@ -203,6 +203,36 @@ int check_abr(node *t){
     
     return (t&&z);
 }
+node*abr_supprimer_racine( node*a ){
+  node*c;
+  
+  if( a -> gauche == NULL ){
+    c = a->droite;
+    free( a );
+    return c;
+  }else if( a -> droite == NULL ){
+    c = a ->gauche;
+    free(a);
+    return c;
+  }
+  
+  node* parent_c;
+
+ 
+  for( c = a -> gauche, parent_c = NULL ; c->droite != NULL; parent_c = c, c=c->droite )
+    ; 
+  if( parent_c == NULL ){ 
+    c->droite = a->gauche;
+    free( a );
+    return c;
+  }
+
+  a->val = c->val; 
+  parent_c -> droite = c->gauche; 
+  free( c );
+  return a;
+}
+
 
 
 
