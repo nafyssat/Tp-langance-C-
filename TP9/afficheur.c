@@ -262,6 +262,30 @@ node * abr_supprimer_valeur(node * a, int v){
 
   return a;
 }
+void padding ( char ch, int n )
+{
+  int i;
+
+  for ( i = 0; i < n; i++ )
+    putchar ( ch );
+}
+
+void structure ( struct node *root, int level )
+{
+  int i;
+
+  if ( root == NULL ) {
+    padding ( '\t', level );
+    puts ( "Null" );
+  }
+  else {
+    structure ( root->droite, level + 1 );
+  
+    padding ( '\t', level );
+    printf ( "%d\n", root->val );
+    structure ( root->gauche, level + 1 );
+  }
+}
 
 
 
