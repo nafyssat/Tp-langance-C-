@@ -232,6 +232,38 @@ node*abr_supprimer_racine( node*a ){
   free( c );
   return a;
 }
+node * abr_supprimer_valeur(node * a, int v){
+  node * c = a;
+  node * parent_c = NULL;
+  while( c != NULL ){
+    if(c->val < v){
+      parent_c = c;
+      c = c->droite;
+    }
+    else if(c->val > v){
+      parent_c = c;
+      c = c -> gauche;
+    }
+    else break;
+  }
+
+  if( c == NULL )
+    return a; /* rien à supprimer */
+  
+  if( c -> val == v ){
+    if( parent_c == NULL )
+      return abr_supprimer_racine(c) ;
+    else if( parent_c->gauche == c ){
+      parent_c -> gauche = abr_supprimer_racine(c) ;
+    } else if( parent_c -> droite == c ){
+      parent_c -> droite = abr_supprimer_racine(c) ;
+    }
+  }
+
+  return a;
+}
+
+
 
 
 
