@@ -299,11 +299,7 @@ void structure ( struct node *root, int level )
 
 int main(int argc, char const *argv[])
 {
-    node *p;
-    p = cons_tree (1, cons_tree (3, NULL, NULL),cons_tree (6, cons_tree (4, NULL, NULL), NULL));
-    int x=depth_tree(p);
-    printf("%d",x);
-    //abr
+    
     
     node *t=NULL;
     
@@ -312,17 +308,9 @@ int main(int argc, char const *argv[])
        
         t = insert_abr (t, vals[i]);
     }
-    print_abr(t);
-      printf(" \n");
-   /* node *p=search_abr(t,8);
-    print_abr(p);*/
-      printf(" \n");
-    node *q=min_abr(t);
-    print_abr(q);
-    printf(" \n");
+    structure(t,0);
+    printf("\n");
+    structure(abr_supprimer_valeur(t,8),0);
     
-    printf("p= %d",check_abr(p));
-    printf(" \n");
-    printf("t= %d",check_abr(t));
     return 0;
 }
